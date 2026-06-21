@@ -163,7 +163,7 @@ export default function Contact() {
                 <div>
                   <div className="c-item__lbl">LinkedIn</div>
                   <div className="c-item__val">
-                    linkedin.com/in/divyanshu-verma
+                    linkedin.com/in/dev-divyanshu-verma
                   </div>
                 </div>
               </a>
