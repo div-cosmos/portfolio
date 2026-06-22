@@ -11,7 +11,7 @@ const ITEMS = [
   {
     type: 'Certification',
     degree: 'Meta Front-End Developer Professional Certificate',
-    institution: 'Coursera — Meta',
+    institution: 'Coursera, Meta',
     year: '2026',
     icon: '📜',
   },

@@ -127,7 +127,7 @@ export default function Contact() {
             <p className="contact__lhs-desc">
               I&apos;m actively looking for senior front-end engineering roles.
               Whether you have an opportunity, a project idea, or just want to
-              chat about React and micro-frontends — my inbox is always open.
+              chat about React and micro-frontends, my inbox is always open.
             </p>
 
             <div className="contact__items">
@@ -213,7 +213,7 @@ export default function Contact() {
                         id="name"
                         name="name"
                         className="form-input"
-                        placeholder="Jane Smith"
+                        placeholder="XYZ"
                         value={form.name}
                         onChange={change}
                         required
@@ -228,7 +228,7 @@ export default function Contact() {
                         name="email"
                         type="email"
                         className="form-input"
-                        placeholder="jane@company.com"
+                        placeholder="xyz@domain.com"
                         value={form.email}
                         onChange={change}
                         required
@@ -244,7 +244,7 @@ export default function Contact() {
                       id="subject"
                       name="subject"
                       className="form-input"
-                      placeholder="Frontend Engineer — Opportunity"
+                      placeholder="Frontend Engineer Opportunity"
                       value={form.subject}
                       onChange={change}
                     />

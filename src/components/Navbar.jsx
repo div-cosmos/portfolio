@@ -4,6 +4,7 @@ const links = [
   { label: 'About',        href: '#about' },
   { label: 'Skills',       href: '#skills' },
   { label: 'Experience',   href: '#experience' },
+  { label: 'Projects',     href: '#projects' },
   { label: 'Achievements', href: '#achievements' },
   { label: 'Education',    href: '#education' },
   { label: 'Contact',      href: '#contact' },
@@ -18,7 +19,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 48)
 
-      const ids = ['about', 'skills', 'experience', 'achievements', 'education', 'contact']
+      const ids = ['about', 'skills', 'experience', 'projects', 'achievements', 'education', 'contact']
       const offset = window.scrollY + 120
       let current = ''
       for (const id of ids) {

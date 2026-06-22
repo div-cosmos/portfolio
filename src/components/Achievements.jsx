@@ -10,7 +10,7 @@ const ACHIEVEMENTS = [
   },
   {
     icon: '🤖',
-    metric: '30–40%',
+    metric: '30-40%',
     metricLbl: 'Effort Reduction',
     title: 'AI-Assisted Workflow Innovation',
     desc: 'Accelerated frontend modernization efforts by reducing repetitive implementation effort through reusable AI-assisted engineering workflows leveraging Claude and Blade MCP server context.',

@@ -182,7 +182,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__socials">
-          <span className="hero__social-lbl">connect —</span>
+          <span className="hero__social-lbl">connect</span>
           <a
             href="mailto:divyanshuverma919@gmail.com"
             className="hero__social"
