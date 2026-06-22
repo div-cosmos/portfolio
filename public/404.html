@@ -3,14 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Divyanshu Verma</title>
-    <!--
-      GitHub Pages SPA redirect.
-      GitHub Pages has no server-side rewrite, so a direct hit / refresh on a
-      client route (e.g. /projects/devpulse) serves this 404 page. It encodes
-      the requested path into a query string and bounces to the app root, where
-      the small script in index.html decodes it back into a clean URL.
-      Root user-site, so keep 0 path segments. See rafgraph/spa-github-pages.
-    -->
+    <!-- GitHub Pages can't rewrite routes, so bounce deep links to / with the path in a query, index.html restores it -->
     <script type="text/javascript">
       var pathSegmentsToKeep = 0;
       var l = window.location;

@@ -1,4 +1,4 @@
-/* Shared building blocks for the Projects section + detail page. */
+// bits shared between the projects section and the detail page
 
 export const ArrowIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"

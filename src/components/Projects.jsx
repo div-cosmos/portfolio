@@ -12,8 +12,7 @@ const ChevronIcon = ({ dir = 'left' }) => (
   </svg>
 )
 
-/* A compact, clickable teaser. Shows only the impactful bits;
-   the full story lives on /#/projects/<slug>. */
+// teaser card -> links out to the full /projects/:slug page
 function ProjectTeaser({ project }) {
   const [ref, vis] = useReveal()
 
@@ -59,7 +58,7 @@ function Carousel({ projects }) {
   const [index, setIndex] = useState(0)
   const [overflow, setOverflow] = useState(false)
 
-  // recompute whether the track overflows (controls only show if it does)
+  // only show arrows/dots when the row actually overflows
   const measure = useCallback(() => {
     const track = trackRef.current
     if (!track) return

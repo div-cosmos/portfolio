@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Developer portfolio">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="DV">
   <defs>
     <linearGradient id="dv" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#00d4ff"/>
@@ -12,8 +12,10 @@
   <rect width="64" height="64" rx="15" fill="url(#dv)"/>
   <rect width="64" height="64" rx="15" fill="url(#sheen)"/>
   <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="25,23 15,32 25,41"/>
-    <polyline points="39,23 49,32 39,41"/>
-    <line x1="35.5" y1="20" x2="28.5" y2="44"/>
+    <!-- D -->
+    <path d="M18 21 L18 43"/>
+    <path d="M18 21 C29 21 29 43 18 43"/>
+    <!-- V -->
+    <polyline points="32,21 39,43 46,21"/>
   </g>
 </svg>

@@ -1141,12 +1141,12 @@ input, textarea { font-family: inherit; }
 }
 .proj-track::-webkit-scrollbar { display: none; }   /* Chrome/Safari */
 
-/* each card takes a comfortable fixed width so several peek into view */
+/* fixed-width cards so a few show at once */
 .proj-track > .proj-teaser {
   flex: 0 0 clamp(290px, 80vw, 380px);
   scroll-snap-align: start;
 }
-/* when everything fits (e.g. a single project), center without stretching */
+/* single card: center it instead of stretching */
 .proj-track--fit { justify-content: center; overflow-x: visible; }
 .proj-track--fit > .proj-teaser { flex: 0 1 clamp(290px, 80vw, 540px); }
 
@@ -1269,7 +1269,7 @@ input, textarea { font-family: inherit; }
 }
 
 /* ============================================================
-   PROJECT DETAIL PAGE (/#/projects/:slug)
+   PROJECT DETAIL PAGE (/projects/:slug)
    ============================================================ */
 
 .pd {

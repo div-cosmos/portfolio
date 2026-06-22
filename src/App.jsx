@@ -15,16 +15,12 @@ export default function App() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // when returning from a project detail page, land on the Projects section
+  // coming back from a project page? jump to the section we left from
   useEffect(() => {
     if (location.state?.scrollTo) {
       const el = document.getElementById(location.state.scrollTo)
-      if (el) {
-        // wait a frame so the section is laid out before scrolling
-        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
-      }
-      // clear the state so a refresh/re-render doesn't re-scroll
-      navigate('/', { replace: true, state: null })
+      if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
+      navigate('/', { replace: true, state: null }) // drop the state so we don't re-scroll
     }
   }, [location, navigate])
 

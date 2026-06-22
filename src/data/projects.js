@@ -1,39 +1,5 @@
-/* ============================================================
-   PROJECTS - single source of truth
-   ------------------------------------------------------------
-   Read by both the Projects SECTION (teaser cards) and the
-   PROJECT DETAIL page (/#/projects/:slug).
-
-   Add a project by dropping another object into this array.
-   `slug` and `title` are required; everything else is optional
-   and only renders when present.
-
-   Fields:
-     slug         (required): URL id, e.g. 'devpulse'  -> /#/projects/devpulse
-     title        (required): project name
-
-     WHAT IT IS
-     tagline      short one-liner
-     description  paragraph: what it does / the problem it solves
-     highlights   array of short bullet strings (key features)
-
-     HOW IT WAS BUILT
-     role         your contribution, e.g. 'Solo Developer'
-     tags         array of tech strings (your stack)
-     category     e.g. 'Full-Stack · Dev Tools'
-     year         e.g. '2026'
-
-     IMPACT
-     metrics      array of { value, label } stat pills
-     status       e.g. 'Live', 'In Progress', 'Beta'  (auto-glows for Live/Beta)
-
-     WHERE TO SEE IT
-     image        screenshot path (drop files in /public)
-     emoji        fallback shown if no image is provided
-     liveUrl      'Live Demo' button + address-bar URL
-     repoUrl      'Source' button
-     links        array of { label, url } extra links (Case Study, Video…)
-   ============================================================ */
+// Drives both the projects section cards and the /projects/:slug pages.
+// slug + title are required, the rest are optional and only show if set.
 export const PROJECTS = [
   {
     slug: 'devpulse',
@@ -64,24 +30,9 @@ export const PROJECTS = [
       'shadcn/ui', '@dnd-kit', 'Recharts', 'PostgreSQL', 'Gemini AI', 'PWA',
     ],
     liveUrl: 'https://devpulse-gamma-eight.vercel.app',
-    repoUrl: '',                     // intentionally hidden, repo kept private
+    repoUrl: '',   // private repo, no source link
     links: [],
   },
-  // 👇 Add more projects here. Each gets its own /#/projects/<slug> page.
-  // {
-  //   slug: 'second-project',
-  //   title: 'Second Project',
-  //   tagline: '...',
-  //   description: '...',
-  //   image: '/second.png',
-  //   status: 'In Progress',
-  //   category: 'Frontend',
-  //   role: 'Lead Frontend',
-  //   metrics: [{ value: '40%', label: 'Faster' }],
-  //   tags: ['Next.js', 'Tailwind'],
-  //   liveUrl: 'https://...',
-  //   highlights: ['...'],
-  // },
 ]
 
 export const getProjectBySlug = slug => PROJECTS.find(p => p.slug === slug)

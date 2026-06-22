@@ -11,7 +11,7 @@ export default function ProjectDetail() {
   const navigate = useNavigate()
   const project = getProjectBySlug(slug)
 
-  // every detail view starts at the top
+  // start at the top when opening a project
   useEffect(() => { window.scrollTo(0, 0) }, [slug])
 
   if (!project) {
@@ -35,7 +35,7 @@ export default function ProjectDetail() {
 
   return (
     <main className="pd">
-      {/* ambient background to match the hero */}
+      {/* same orb/grid backdrop as the hero */}
       <div className="pd__bg" aria-hidden="true">
         <div className="pd__orb pd__orb1" />
         <div className="pd__orb pd__orb2" />
