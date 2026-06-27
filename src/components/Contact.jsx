@@ -87,20 +87,43 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
+    company: "", // honeypot: a real person never touches this
   });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  // Where the form posts to. Same-origin /api/contact on Vercel, but you can
+  // point it elsewhere with an env var if the API lives on another domain.
+  const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "/api/contact";
 
   const change = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    const { name, email, subject, message } = form;
-    const body = `Hi Divyanshu,\n\nMy name is ${name}.\n\n${message}\n\nReply to: ${email}`;
-    window.location.href = `mailto:divyanshuverma919@gmail.com?subject=${encodeURIComponent(subject || "Portfolio Inquiry")}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", subject: "", message: "", company: "" });
+    } catch (err) {
+      setError(err.message || "Could not send your message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -187,10 +210,10 @@ export default function Contact() {
               {sent ? (
                 <div className="form-sent">
                   <span className="form-sent-icon">✅</span>
-                  <h4>Message ready to send!</h4>
+                  <h4>Message sent!</h4>
                   <p>
-                    Your email client should have opened. Looking forward to
-                    connecting!
+                    Thanks for reaching out! I&apos;ve received your message and
+                    will get back to you soon.
                   </p>
                   <button
                     className="btn btn-outline"
@@ -203,6 +226,18 @@ export default function Contact() {
               ) : (
                 <form onSubmit={submit}>
                   <div className="form-head">Send me a message</div>
+
+                  {/* honeypot: people can't see this, but bots love to fill it in */}
+                  <input
+                    type="text"
+                    name="company"
+                    className="hp-field"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={form.company}
+                    onChange={change}
+                  />
 
                   <div className="form-row">
                     <div className="form-group">
@@ -236,18 +271,35 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="subject">
-                      Subject
-                    </label>
-                    <input
-                      id="subject"
-                      name="subject"
-                      className="form-input"
-                      placeholder="Frontend Engineer Opportunity"
-                      value={form.subject}
-                      onChange={change}
-                    />
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="phone">
+                        Your Contact Number
+                      </label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        className="form-input"
+                        placeholder="+91 98765 43210"
+                        value={form.phone}
+                        onChange={change}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="subject">
+                        Subject
+                      </label>
+                      <input
+                        id="subject"
+                        name="subject"
+                        className="form-input"
+                        placeholder="Frontend Engineer Opportunity"
+                        value={form.subject}
+                        onChange={change}
+                      />
+                    </div>
                   </div>
 
                   <div className="form-group">
@@ -265,12 +317,15 @@ export default function Contact() {
                     />
                   </div>
 
+                  {error && <p className="form-error">{error}</p>}
+
                   <button
                     type="submit"
                     className="btn btn-primary"
                     style={{ width: "100%", justifyContent: "center" }}
+                    disabled={sending}
                   >
-                    Send Message <SendIcon />
+                    {sending ? "Sending..." : "Send Message"} <SendIcon />
                   </button>
                 </form>
               )}

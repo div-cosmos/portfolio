@@ -2249,6 +2249,25 @@ a.c-item:hover {
   font-size: 0.9rem;
 }
 
+.form-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+/* honeypot: tucked off-screen so people never see it, but bots still do */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */
