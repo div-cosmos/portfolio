@@ -772,22 +772,6 @@ textarea {
   font-weight: 600;
 }
 
-.about__loc {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 28px;
-  padding: 14px 18px;
-  background: var(--primary-dim);
-  border: 1px solid var(--primary-border);
-  border-radius: var(--r);
-  color: var(--text-dim);
-  font-size: 0.88rem;
-}
-.about__loc-pin {
-  font-size: 1rem;
-}
-
 .about__comp h3 {
   font-family: var(--mono);
   font-size: 0.85rem;
@@ -1337,33 +1321,12 @@ textarea {
 
 /* ---- titles / text ---- */
 
-.proj-title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
 .proj-tagline {
   font-family: var(--mono);
   font-size: 0.9rem;
   color: var(--primary);
   margin-bottom: 16px;
 }
-.proj-desc {
-  color: var(--text-dim);
-  font-size: 0.94rem;
-  line-height: 1.85;
-  margin-bottom: 22px;
-}
-.proj-desc--clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-bottom: 18px;
-}
-
 /* ---- metrics (impact stat strip) ---- */
 
 .proj-metrics {
@@ -1457,9 +1420,6 @@ textarea {
 
 /* ---- links ---- */
 
-.proj-actions {
-  margin-top: auto;
-}
 .proj-links {
   display: flex;
   flex-wrap: wrap;
@@ -1998,14 +1958,14 @@ textarea {
 }
 
 /* ============================================================
-   EDUCATION
+   CREDENTIALS
    ============================================================ */
 
-.education {
+.credentials {
   background: var(--bg);
 }
 
-.edu-grid {
+.cred-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2014,7 +1974,7 @@ textarea {
   margin: 0 auto;
 }
 
-.edu-card {
+.cred-card {
   flex: 1 1 360px;
   max-width: 398px;
   background: var(--bg-card);
@@ -2025,7 +1985,7 @@ textarea {
   position: relative;
   overflow: hidden;
 }
-.edu-card::before {
+.cred-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -2035,13 +1995,13 @@ textarea {
   background: linear-gradient(180deg, var(--primary), var(--secondary));
   border-radius: 3px 0 0 3px;
 }
-.edu-card:hover {
+.cred-card:hover {
   border-color: rgba(0, 212, 255, 0.18);
   transform: translateY(-4px);
   box-shadow: var(--glow), var(--shadow);
 }
 
-.edu-type {
+.cred-type {
   font-family: var(--mono);
   font-size: 0.7rem;
   color: var(--primary);
@@ -2050,7 +2010,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-.edu-degree {
+.cred-degree {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
@@ -2058,14 +2018,14 @@ textarea {
   line-height: 1.45;
 }
 
-.edu-inst {
+.cred-inst {
   font-size: 0.86rem;
   color: var(--text-dim);
   margin-bottom: 14px;
   line-height: 1.5;
 }
 
-.edu-year {
+.cred-year {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -2165,6 +2125,61 @@ a.c-item:hover {
   font-weight: 500;
 }
 
+/* keep the pin aligned to the top when the "Open to work" block is tall */
+.c-item--work {
+  align-items: flex-start;
+}
+
+.work-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.work-mode {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 11px;
+  border-radius: 999px;
+  color: var(--primary);
+  background: var(--primary-dim);
+  border: 1px solid var(--primary-border);
+  letter-spacing: 0.02em;
+}
+.work-mode--primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(0, 212, 255, 0.22);
+}
+
+.work-cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 9px;
+}
+.work-city {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 2px 9px;
+}
+.work-city::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.7;
+}
+
 .contact__form-box {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -2237,7 +2252,26 @@ a.c-item:hover {
   gap: 12px;
 }
 .form-sent-icon {
-  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: 0 10px 28px rgba(0, 212, 255, 0.22);
+  animation: sentPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes sentPop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .form-sent h4 {
   font-size: 1.1rem;
@@ -2308,7 +2342,10 @@ a.c-item:hover {
 
 @media (max-width: 768px) {
   .section {
-    padding: 80px 0;
+    padding: 56px 0;
+  }
+  .sec-header {
+    margin-bottom: 40px;
   }
 
   .nav__burger {
@@ -2331,9 +2368,25 @@ a.c-item:hover {
   .nav__links.open {
     display: flex;
   }
+  /* While the menu is open, drop the navbar's backdrop-filter. A backdrop-filter
+     turns the nav into a containing block for its position:fixed child, which
+     otherwise traps the fullscreen menu inside the bar once the page is
+     scrolled (menu collapses to the top, page shows through). */
+  .nav.menu-open {
+    background: var(--bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .nav__link {
     font-size: 1.15rem;
     padding: 13px 22px;
+  }
+
+  .hero {
+    padding-bottom: 92px;
+  }
+  .hero__scroll {
+    bottom: 12px;
   }
 
   .hero__stats {
@@ -2355,7 +2408,7 @@ a.c-item:hover {
     bottom: auto;
   }
 
-  .edu-grid {
+  .cred-grid {
     grid-template-columns: 1fr;
   }
 

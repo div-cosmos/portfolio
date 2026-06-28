@@ -50,11 +50,6 @@ export default function About() {
                 and production reliability.
               </p>
             </div>
-
-            <div className="about__loc">
-              <span className="about__loc-pin">📍</span>
-              <span>Open to: Gurgaon · Noida · Delhi · Bangalore · Hyderabad · Pune</span>
-            </div>
           </div>
 
           <div ref={rightRef} className={`reveal-r${rightVis ? ' in' : ''}`}>

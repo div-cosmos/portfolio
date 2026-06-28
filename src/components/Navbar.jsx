@@ -6,7 +6,7 @@ const links = [
   { label: 'Experience',   href: '#experience' },
   { label: 'Projects',     href: '#projects' },
   { label: 'Achievements', href: '#achievements' },
-  { label: 'Certifications', href: '#education' },
+  { label: 'Credentials', href: '#credentials' },
   { label: 'Contact',      href: '#contact' },
 ]
 
@@ -19,7 +19,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 48)
 
-      const ids = ['about', 'skills', 'experience', 'projects', 'achievements', 'education', 'contact']
+      const ids = ['about', 'skills', 'experience', 'projects', 'achievements', 'credentials', 'contact']
       const offset = window.scrollY + 120
       let current = ''
       for (const id of ids) {
@@ -33,6 +33,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Lock background scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   const handleLink = (e, href) => {
     e.preventDefault()
     setOpen(false)
@@ -41,7 +47,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
+    <nav className={`nav${scrolled ? ' scrolled' : ''}${open ? ' menu-open' : ''}`}>
       <div className="nav__inner">
         <a href="#" className="nav__logo" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
           DV

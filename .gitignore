@@ -1,6 +1,9 @@
 /node_modules
 
-# local env files (never commit secrets) — .env.example is tracked
+# build output (Vercel rebuilds this on every deploy)
+/dist
+
+# local env files (never commit secrets). .env.example is tracked
 .env
 .env.*
 !.env.example

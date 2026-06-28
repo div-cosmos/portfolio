@@ -90,13 +90,13 @@ export default function Contact() {
     phone: "",
     subject: "",
     message: "",
-    company: "", // honeypot: a real person never touches this
+    company: "",
   });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
-  // Where the form posts to. Same-origin /api/contact on Vercel, but you can
+  // where the form posts to. Same-origin /api/contact on Vercel, but can
   // point it elsewhere with an env var if the API lives on another domain.
   const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "/api/contact";
 
@@ -115,10 +115,19 @@ export default function Contact() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || "Something went wrong. Please try again.");
+        throw new Error(
+          data.error || "Something went wrong. Please try again.",
+        );
       }
       setSent(true);
-      setForm({ name: "", email: "", phone: "", subject: "", message: "", company: "" });
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        company: "",
+      });
     } catch (err) {
       setError(err.message || "Could not send your message. Please try again.");
     } finally {
@@ -191,14 +200,30 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="c-item">
+              <div className="c-item c-item--work">
                 <span className="c-item__icon">
                   <LocationIcon />
                 </span>
                 <div>
-                  <div className="c-item__lbl">Open to locations</div>
-                  <div className="c-item__val">
-                    Gurgaon · Noida · Delhi · Bangalore · Hyderabad · Pune
+                  <div className="c-item__lbl">Open to work</div>
+                  <div className="work-modes">
+                    <span className="work-mode work-mode--primary">On-site</span>
+                    <span className="work-mode">Hybrid</span>
+                    <span className="work-mode">Remote</span>
+                  </div>
+                  <div className="work-cities">
+                    {[
+                      "Gurgaon",
+                      "Noida",
+                      "Delhi",
+                      "Bangalore",
+                      "Hyderabad",
+                      "Pune",
+                    ].map((city) => (
+                      <span key={city} className="work-city">
+                        {city}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -209,7 +234,20 @@ export default function Contact() {
             <div className="contact__form-box">
               {sent ? (
                 <div className="form-sent">
-                  <span className="form-sent-icon">✅</span>
+                  <span className="form-sent-icon">
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
                   <h4>Message sent!</h4>
                   <p>
                     Thanks for reaching out! I&apos;ve received your message and
@@ -227,7 +265,7 @@ export default function Contact() {
                 <form onSubmit={submit}>
                   <div className="form-head">Send me a message</div>
 
-                  {/* honeypot: people can't see this, but bots love to fill it in */}
+                  {/* honeypot: people can't see this, but bots fill it in */}
                   <input
                     type="text"
                     name="company"
@@ -284,7 +322,6 @@ export default function Contact() {
                         placeholder="+91 98765 43210"
                         value={form.phone}
                         onChange={change}
-                        required
                       />
                     </div>
                     <div className="form-group">
