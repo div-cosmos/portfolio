@@ -515,6 +515,13 @@ textarea {
     /* keep the scroll inside the overlay — stops it chaining to the page
        behind (which rubber-bands the fixed overlay and flashes the hero) */
     overscroll-behavior: contain;
+    /* hide the scrollbar but keep scrollability as a safety net for short
+       screens / landscape / large accessibility font sizes */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .mobm__inner::-webkit-scrollbar {
+    display: none;
   }
 
   .mobm__list {
