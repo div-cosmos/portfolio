@@ -512,6 +512,9 @@ textarea {
     gap: 16px;
     padding: 96px 28px 56px;
     overflow-y: auto;
+    /* keep the scroll inside the overlay — stops it chaining to the page
+       behind (which rubber-bands the fixed overlay and flashes the hero) */
+    overscroll-behavior: contain;
   }
 
   .mobm__list {
@@ -574,13 +577,6 @@ textarea {
     font-weight: 600;
     color: var(--text);
   }
-  .mobm__card-arrow {
-    display: flex;
-    color: var(--text-muted);
-    transition:
-      color 0.3s ease,
-      transform 0.3s ease;
-  }
   .mobm__card:active {
     transform: scale(0.98);
   }
@@ -588,10 +584,6 @@ textarea {
     border-color: var(--primary);
     background: var(--primary-dim);
     box-shadow: var(--glow);
-  }
-  .mobm__card.active .mobm__card-arrow {
-    color: var(--primary);
-    transform: translateX(3px);
   }
 
   /* footer: socials */
