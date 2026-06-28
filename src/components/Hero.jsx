@@ -186,7 +186,8 @@ export default function Hero() {
           <a
             href="mailto:divyanshuverma919@gmail.com"
             className="hero__social"
-            title="Email"
+            data-tip="Email me"
+            aria-label="Email me"
           >
             <MailIcon />
           </a>
@@ -195,11 +196,17 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="hero__social"
-            title="LinkedIn"
+            data-tip="Connect"
+            aria-label="LinkedIn profile"
           >
             <LinkedInIcon />
           </a>
-          <a href="tel:+917300099947" className="hero__social" title="Phone">
+          <a
+            href="tel:+917300099947"
+            className="hero__social"
+            data-tip="Call me"
+            aria-label="Call me"
+          >
             <PhoneIcon />
           </a>
         </div>
